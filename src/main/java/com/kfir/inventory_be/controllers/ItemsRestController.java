@@ -2,7 +2,6 @@ package com.kfir.inventory_be.controllers;
 
 import com.kfir.inventory_be.dto.ItemDTO;
 import com.kfir.inventory_be.models.Item;
-import com.kfir.inventory_be.models.ItemType;
 import com.kfir.inventory_be.services.ItemsService;
 import com.kfir.inventory_be.utils.ObjectMapperUtils;
 import org.bson.types.ObjectId;
@@ -28,31 +27,6 @@ public class ItemsRestController {
     @GetMapping(value = "/byId/{id}")
     public ItemDTO getItemById(@PathVariable("id") ObjectId itemId) {
         return ObjectMapperUtils.map(itemsService.findItemById(itemId), ItemDTO.class);
-    }
-
-    @GetMapping(value = "/byLinkedPerson/{linkedPersonId}")
-    public List<ItemDTO> getItemsByLinkedPerson(@PathVariable("linkedPersonId") ObjectId linkedPersonId) {
-        return ObjectMapperUtils.mapAll(itemsService.findItemsByLinkedPerson(linkedPersonId), ItemDTO.class);
-    }
-
-    @GetMapping(value = "/byTypeAndSerialNumber/{type}/{serialNumber}")
-    public ItemDTO getItemByTypeAndSerialNumber(@PathVariable("type") ItemType type, @PathVariable("serialNumber") int serialNumber) {
-        return ObjectMapperUtils.map(itemsService.findItemByTypeAndSerialNumber(type, serialNumber), ItemDTO.class);
-    }
-
-    @GetMapping(value = "/byType/{type}")
-    public List<ItemDTO> getItemsByType(@PathVariable("type") ItemType type) {
-        return ObjectMapperUtils.mapAll(itemsService.findItemsByType(type), ItemDTO.class);
-    }
-
-    @GetMapping(value = "/byInStock/{isInStock}")
-    public List<ItemDTO> getItemsByInStock(@PathVariable("isInStock") boolean isInStock) {
-        return ObjectMapperUtils.mapAll(itemsService.findItemsByInStock(isInStock), ItemDTO.class);
-    }
-
-    @GetMapping(value = "/bySerialNumber/{serialNumber}")
-    public List<ItemDTO> getItemsBySerialNumber(@PathVariable("serialNumber") int serialNumber) {
-        return ObjectMapperUtils.mapAll(itemsService.findItemsBySerialNumber(serialNumber), ItemDTO.class);
     }
 
     @PostMapping(value = "/save")

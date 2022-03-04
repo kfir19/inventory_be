@@ -11,8 +11,6 @@ public interface RolesService {
 
     Role findRoleById(ObjectId id);
 
-    List<Role> findRolesByKind(String kind);
-
     Role saveOrUpdateRole(Role role);
 
     void deleteRoleById(ObjectId id);

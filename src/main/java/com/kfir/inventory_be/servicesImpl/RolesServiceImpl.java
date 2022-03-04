@@ -26,11 +26,6 @@ public class RolesServiceImpl implements RolesService {
     }
 
     @Override
-    public List<Role> findRolesByKind(String kind) {
-        return repo.findRolesByKind(kind);
-    }
-
-    @Override
     public Role saveOrUpdateRole(Role role) {
         return repo.save(role);
     }

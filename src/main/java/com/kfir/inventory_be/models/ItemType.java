@@ -15,14 +15,14 @@ public class ItemType {
     private String type;
     private String displayName;
 
-    public ItemType (String type, String displayName){
+    public ItemType(String type, String displayName) {
         this.id = new ObjectId();
         this.type = type;
         this.displayName = displayName;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return type;
     }
 

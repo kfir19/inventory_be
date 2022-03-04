@@ -11,8 +11,6 @@ public interface ItemTypesService {
 
     ItemType findItemTypeById(ObjectId id);
 
-    List<ItemType> findItemTypesByType(String type);
-
     ItemType saveOrUpdateItemType(ItemType itemType);
 
     void deleteItemTypeById(ObjectId id);

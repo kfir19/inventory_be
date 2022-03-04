@@ -26,11 +26,6 @@ public class ItemTypesServiceImpl implements ItemTypesService {
     }
 
     @Override
-    public List<ItemType> findItemTypesByType(String type) {
-        return repo.findItemTypesByType(type);
-    }
-
-    @Override
     public ItemType saveOrUpdateItemType(ItemType itemType) {
         return repo.save(itemType);
     }

@@ -30,11 +30,6 @@ public class ItemTypesRestController {
         return ObjectMapperUtils.map(itemTypesService.findItemTypeById(itemTypeId), ItemTypeDTO.class);
     }
 
-    @GetMapping(value = "/byType/{type}")
-    public List<ItemTypeDTO> getItemTypesByType(@PathVariable("type") String type) {
-        return ObjectMapperUtils.mapAll(itemTypesService.findItemTypesByType(type), ItemTypeDTO.class);
-    }
-
     @PostMapping(value = "/save")
     public ResponseEntity<ItemTypeDTO> saveOrUpdateItemType(@RequestBody ItemTypeDTO itemTypeDTO) {
         itemTypesService.saveOrUpdateItemType(ObjectMapperUtils.map(itemTypeDTO, ItemType.class));

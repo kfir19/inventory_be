@@ -12,8 +12,6 @@ public interface ItemTypesRepository extends MongoRepository<ItemType, ObjectId>
 
     ItemType findItemTypeById(ObjectId id);
 
-    List<ItemType> findItemTypesByType(String type);
-
     ItemType save(ItemType itemType);
 
     void deleteItemTypeById(ObjectId id);

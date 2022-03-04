@@ -16,14 +16,14 @@ public class Role {
     private String displayName;
 
 
-    public Role(String kind, String displayName){
+    public Role(String kind, String displayName) {
         this.id = new ObjectId();
         this.kind = kind;
         this.displayName = displayName;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return kind;
     }
 

@@ -30,11 +30,6 @@ public class RolesRestController {
         return ObjectMapperUtils.map(rolesService.findRoleById(roleId), RoleDTO.class);
     }
 
-    @GetMapping(value = "/byKind/{kind}")
-    public List<RoleDTO> getRolesByKind(@PathVariable("kind") String kind) {
-        return ObjectMapperUtils.mapAll(rolesService.findRolesByKind(kind), RoleDTO.class);
-    }
-
     @PostMapping(value = "/save")
     public ResponseEntity<RoleDTO> saveOrUpdateRole(@RequestBody RoleDTO roleDTO) {
         rolesService.saveOrUpdateRole(ObjectMapperUtils.map(roleDTO, Role.class));

@@ -12,8 +12,6 @@ public interface RolesRepository extends MongoRepository<Role, ObjectId> {
 
     Role findRoleById(ObjectId id);
 
-    List<Role> findRolesByKind(String kind);
-
     Role save(Role role);
 
     void deleteRoleById(ObjectId id);
