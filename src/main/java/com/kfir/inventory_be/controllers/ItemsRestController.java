@@ -20,7 +20,6 @@ public class ItemsRestController {
     @Autowired
     private ItemsService itemsService;
 
-
     @GetMapping(value = "/")
     public List<ItemDTO> getAllItems() {
         return ObjectMapperUtils.mapAll(itemsService.findAll(), ItemDTO.class);

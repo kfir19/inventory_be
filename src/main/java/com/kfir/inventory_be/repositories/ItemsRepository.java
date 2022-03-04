@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface ItemsRepository extends MongoRepository<Item, ObjectId> {
 
-    Item findItemById(ObjectId id);
-
     List<Item> findAll();
+
+    Item findItemById(ObjectId id);
 
     List<Item> findItemsByLinkedPerson(ObjectId id);
 
