@@ -3,11 +3,10 @@ package com.kfir.inventory_be.servicesImpl;
 import com.kfir.inventory_be.models.Role;
 import com.kfir.inventory_be.repositories.RolesRepository;
 import com.kfir.inventory_be.services.RolesService;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class RolesServiceImpl implements RolesService {
@@ -21,7 +20,7 @@ public class RolesServiceImpl implements RolesService {
     }
 
     @Override
-    public Role findRoleById(ObjectId id) {
+    public Role findRoleById(UUID id) {
         return repo.findRoleById(id);
     }
 
@@ -31,7 +30,7 @@ public class RolesServiceImpl implements RolesService {
     }
 
     @Override
-    public void deleteRoleById(ObjectId id) {
+    public void deleteRoleById(UUID id) {
         repo.deleteRoleById(id);
     }
 }

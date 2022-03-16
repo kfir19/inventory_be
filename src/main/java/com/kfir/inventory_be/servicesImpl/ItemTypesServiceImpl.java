@@ -3,11 +3,10 @@ package com.kfir.inventory_be.servicesImpl;
 import com.kfir.inventory_be.models.ItemType;
 import com.kfir.inventory_be.repositories.ItemTypesRepository;
 import com.kfir.inventory_be.services.ItemTypesService;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ItemTypesServiceImpl implements ItemTypesService {
@@ -21,7 +20,7 @@ public class ItemTypesServiceImpl implements ItemTypesService {
     }
 
     @Override
-    public ItemType findItemTypeById(ObjectId id) {
+    public ItemType findItemTypeById(UUID id) {
         return repo.findItemTypeById(id);
     }
 
@@ -31,7 +30,7 @@ public class ItemTypesServiceImpl implements ItemTypesService {
     }
 
     @Override
-    public void deleteItemTypeById(ObjectId id) {
+    public void deleteItemTypeById(UUID id) {
         repo.deleteItemTypeById(id);
     }
 }

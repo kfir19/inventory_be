@@ -1,17 +1,16 @@
 package com.kfir.inventory_be.services;
 
 import com.kfir.inventory_be.models.Item;
-import org.bson.types.ObjectId;
-
 import java.util.List;
+import java.util.UUID;
 
 public interface ItemsService {
 
     List<Item> findAll();
 
-    Item findItemById(ObjectId id);
+    Item findItemById(UUID id);
 
     Item saveOrUpdateItem(Item item);
 
-    void deleteItemById(ObjectId id);
+    void deleteItemById(UUID id);
 }

@@ -1,18 +1,17 @@
 package com.kfir.inventory_be.services;
 
 import com.kfir.inventory_be.models.Role;
-import org.bson.types.ObjectId;
-
 import java.util.List;
+import java.util.UUID;
 
 public interface RolesService {
 
     List<Role> findAll();
 
-    Role findRoleById(ObjectId id);
+    Role findRoleById(UUID id);
 
     Role saveOrUpdateRole(Role role);
 
-    void deleteRoleById(ObjectId id);
+    void deleteRoleById(UUID id);
 
 }

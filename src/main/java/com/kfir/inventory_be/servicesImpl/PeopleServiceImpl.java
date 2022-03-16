@@ -3,11 +3,10 @@ package com.kfir.inventory_be.servicesImpl;
 import com.kfir.inventory_be.models.Person;
 import com.kfir.inventory_be.repositories.PeopleRepository;
 import com.kfir.inventory_be.services.PeopleService;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PeopleServiceImpl implements PeopleService {
@@ -21,7 +20,7 @@ public class PeopleServiceImpl implements PeopleService {
     }
 
     @Override
-    public Person findPersonById(ObjectId id) {
+    public Person findPersonById(UUID id) {
         return repo.findPersonById(id);
     }
 
@@ -31,7 +30,7 @@ public class PeopleServiceImpl implements PeopleService {
     }
 
     @Override
-    public void deletePersonById(ObjectId id) {
+    public void deletePersonById(UUID id) {
         repo.deletePersonById(id);
     }
 }

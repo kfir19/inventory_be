@@ -1,14 +1,12 @@
 package com.kfir.inventory_be.dto;
 
 import lombok.Data;
-import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
+import java.util.UUID;
 
 @Data
 public class ItemTypeDTO {
 
-    @Id
-    private ObjectId id;
+    private UUID id;
 
     private String type;
     private String displayName;

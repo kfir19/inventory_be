@@ -1,15 +1,13 @@
 package com.kfir.inventory_be.dto;
 
 import lombok.Data;
-import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
+import java.util.UUID;
 
 @Data
 public class ItemDTO {
 
-    @Id
-    private ObjectId id;
-    private ObjectId linkedPerson;
+    private UUID id;
+    private UUID linkedPerson;
 
     private int serialNumber;
     private boolean isInStock;

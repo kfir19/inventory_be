@@ -4,16 +4,16 @@ import com.kfir.inventory_be.dto.ItemDTO;
 import com.kfir.inventory_be.models.Item;
 import com.kfir.inventory_be.services.ItemsService;
 import com.kfir.inventory_be.utils.ObjectMapperUtils;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/items")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
 public class ItemsRestController {
 
     @Autowired
@@ -25,7 +25,7 @@ public class ItemsRestController {
     }
 
     @GetMapping(value = "/byId/{id}")
-    public ItemDTO getItemById(@PathVariable("id") ObjectId itemId) {
+    public ItemDTO getItemById(@PathVariable("id") UUID itemId) {
         return ObjectMapperUtils.map(itemsService.findItemById(itemId), ItemDTO.class);
     }
 
@@ -36,7 +36,7 @@ public class ItemsRestController {
     }
 
     @DeleteMapping(value = "/delete/{itemId}")
-    public ResponseEntity<ItemDTO> deleteItemById(@PathVariable("itemId") ObjectId itemId) {
+    public ResponseEntity<ItemDTO> deleteItemById(@PathVariable("itemId") UUID itemId) {
         itemsService.deleteItemById(itemsService.findItemById(itemId).getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }

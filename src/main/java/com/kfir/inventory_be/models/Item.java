@@ -1,25 +1,28 @@
 package com.kfir.inventory_be.models;
 
 import lombok.Data;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.UUID;
 
 @Data
 @Document("items")
 public class Item {
 
     @Id
-    private ObjectId id;
-    private ObjectId linkedPerson;
+    private UUID id;
+    private UUID linkedPerson;
 
     private int serialNumber;
     private boolean isInStock;
     private ItemType type;
 
+    public Item(){
+    }
 
     public Item(int serialNumber, ItemType type) {
-        this.id = new ObjectId();
+        String idKey = String.format("%s_%s", serialNumber, type.getType());
+        this.id = UUID.nameUUIDFromBytes(idKey.getBytes());
         this.serialNumber = serialNumber;
         this.type = type;
         this.isInStock = true;

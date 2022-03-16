@@ -1,17 +1,16 @@
 package com.kfir.inventory_be.services;
 
 import com.kfir.inventory_be.models.Person;
-import org.bson.types.ObjectId;
-
 import java.util.List;
+import java.util.UUID;
 
 public interface PeopleService {
 
     List<Person> findAll();
 
-    Person findPersonById(ObjectId id);
+    Person findPersonById(UUID id);
 
     Person saveOrUpdatePerson(Person person);
 
-    void deletePersonById(ObjectId id);
+    void deletePersonById(UUID id);
 }

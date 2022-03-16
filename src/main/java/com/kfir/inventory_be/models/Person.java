@@ -1,35 +1,37 @@
 package com.kfir.inventory_be.models;
 
-
 import lombok.Data;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.util.List;
+import java.util.UUID;
 
 @Data
-@Document("persons")
+@Document("people")
 public class Person {
 
     @Id
-    private ObjectId id;
+    private UUID id;
 
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private String personalNumber;
+    private String imgSrc;
     private Role role;
-    private List<ObjectId> linkedItems;
+    private List<UUID> linkedItems;
 
+    public Person(){}
 
-    public Person(String firstName, String lastName, String phoneNumber, String personalNumber, Role role) {
-        this.id = new ObjectId();
+    public Person(String firstName, String lastName, String phoneNumber, String personalNumber,String imgSrc, Role role) {
+        String idKey = String.format("%s_%s_%s_%s", firstName, lastName, phoneNumber, personalNumber);
+        this.id = UUID.nameUUIDFromBytes(idKey.getBytes());
 
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.personalNumber = personalNumber;
+        this.imgSrc = imgSrc;
         this.role = role;
     }
 

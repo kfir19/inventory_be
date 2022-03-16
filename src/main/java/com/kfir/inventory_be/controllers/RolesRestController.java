@@ -4,16 +4,16 @@ import com.kfir.inventory_be.dto.RoleDTO;
 import com.kfir.inventory_be.models.Role;
 import com.kfir.inventory_be.services.RolesService;
 import com.kfir.inventory_be.utils.ObjectMapperUtils;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/roles")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
 public class RolesRestController {
 
     @Autowired
@@ -26,7 +26,7 @@ public class RolesRestController {
     }
 
     @GetMapping(value = "/byId/{id}")
-    public RoleDTO getRoleById(@PathVariable("id") ObjectId roleId) {
+    public RoleDTO getRoleById(@PathVariable("id") UUID roleId) {
         return ObjectMapperUtils.map(rolesService.findRoleById(roleId), RoleDTO.class);
     }
 
@@ -37,7 +37,7 @@ public class RolesRestController {
     }
 
     @DeleteMapping(value = "/delete/{roleId}")
-    public ResponseEntity<RoleDTO> deleteRoleById(@PathVariable("roleId") ObjectId roleId) {
+    public ResponseEntity<RoleDTO> deleteRoleById(@PathVariable("roleId") UUID roleId) {
         rolesService.deleteRoleById(rolesService.findRoleById(roleId).getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }

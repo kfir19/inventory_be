@@ -4,16 +4,16 @@ import com.kfir.inventory_be.dto.PersonDTO;
 import com.kfir.inventory_be.models.Person;
 import com.kfir.inventory_be.services.PeopleService;
 import com.kfir.inventory_be.utils.ObjectMapperUtils;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/people")
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"})
 public class PeopleRestController {
 
     @Autowired
@@ -25,7 +25,7 @@ public class PeopleRestController {
     }
 
     @GetMapping(value = "/byId/{id}")
-    public PersonDTO getPersonById(@PathVariable("id") ObjectId personId) {
+    public PersonDTO getPersonById(@PathVariable("id") UUID personId) {
         return ObjectMapperUtils.map(peopleService.findPersonById(personId), PersonDTO.class);
     }
 
@@ -36,7 +36,7 @@ public class PeopleRestController {
     }
 
     @DeleteMapping(value = "/delete/{personId}")
-    public ResponseEntity<PersonDTO> deletePersonById(@PathVariable("personId") ObjectId personId) {
+    public ResponseEntity<PersonDTO> deletePersonById(@PathVariable("personId") UUID personId) {
         peopleService.deletePersonById(peopleService.findPersonById(personId).getId());
         return new ResponseEntity<>(HttpStatus.OK);
     }

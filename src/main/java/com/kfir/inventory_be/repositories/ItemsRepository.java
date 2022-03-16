@@ -1,18 +1,17 @@
 package com.kfir.inventory_be.repositories;
 
 import com.kfir.inventory_be.models.Item;
-import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
-
 import java.util.List;
+import java.util.UUID;
 
-public interface ItemsRepository extends MongoRepository<Item, ObjectId> {
+public interface ItemsRepository extends MongoRepository<Item, UUID> {
 
     List<Item> findAll();
 
-    Item findItemById(ObjectId id);
+    Item findItemById(UUID id);
 
     Item save(Item item);
 
-    void deleteItemById(ObjectId id);
+    void deleteItemById(UUID id);
 }
