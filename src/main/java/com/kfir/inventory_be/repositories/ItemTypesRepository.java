@@ -2,6 +2,7 @@ package com.kfir.inventory_be.repositories;
 
 import com.kfir.inventory_be.models.ItemType;
 import org.springframework.data.mongodb.repository.MongoRepository;
+
 import java.util.List;
 import java.util.UUID;
 

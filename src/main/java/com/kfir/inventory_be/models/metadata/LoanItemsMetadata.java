@@ -14,11 +14,11 @@ public class LoanItemsMetadata {
     private UUID id;
 
     /*------LOAN ITEMS----------------*/
-    private String titleLoanItems;
+    private String title;
     private String wtrMrkSelectPerson;
     private String btnLblClearPersonSelection;
-    private String tblTitleLoanItemsItemType;
-    private String tblTitleLoanItemsItemSN;
+    private String tblTitleItemType;
+    private String tblTitleItemSN;
 
     /*------ASSIGN NEW ITEM TO PERSON----------------*/
     private String titleAssignToPerson;
@@ -28,14 +28,14 @@ public class LoanItemsMetadata {
     private String btnLblSaveAssignmentToPerson;
     private String btnLblSaveChanges;
 
-    public LoanItemsMetadata(String titleLoanItems, String wtrMrkSelectPerson, String btnLblClearPersonSelection, String tblTitleLoanItemsItemType, String tblTitleLoanItemsItemSN, String titleAssignToPerson, String wtrMrkSelectItem, String btnLblAddSelectionToList, String btnLblCloseAssignToPerson, String btnLblSaveAssignmentToPerson, String btnLblSaveChanges) {
+    public LoanItemsMetadata(String title, String wtrMrkSelectPerson, String btnLblClearPersonSelection, String tblTitleItemType, String tblTitleItemSN, String titleAssignToPerson, String wtrMrkSelectItem, String btnLblAddSelectionToList, String btnLblCloseAssignToPerson, String btnLblSaveAssignmentToPerson, String btnLblSaveChanges) {
         String idKey = "loan_items_metadata";
         this.id = UUID.nameUUIDFromBytes(idKey.getBytes());
-        this.titleLoanItems = titleLoanItems;
+        this.title = title;
         this.wtrMrkSelectPerson = wtrMrkSelectPerson;
         this.btnLblClearPersonSelection = btnLblClearPersonSelection;
-        this.tblTitleLoanItemsItemType = tblTitleLoanItemsItemType;
-        this.tblTitleLoanItemsItemSN = tblTitleLoanItemsItemSN;
+        this.tblTitleItemType = tblTitleItemType;
+        this.tblTitleItemSN = tblTitleItemSN;
         this.titleAssignToPerson = titleAssignToPerson;
         this.wtrMrkSelectItem = wtrMrkSelectItem;
         this.btnLblAddSelectionToList = btnLblAddSelectionToList;

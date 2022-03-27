@@ -3,6 +3,7 @@ package com.kfir.inventory_be.models;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -21,9 +22,10 @@ public class Person {
     private Role role;
     private List<UUID> linkedItems;
 
-    public Person(){}
+    public Person() {
+    }
 
-    public Person(String firstName, String lastName, String phoneNumber, String personalNumber,String imgSrc, Role role) {
+    public Person(String firstName, String lastName, String phoneNumber, String personalNumber, String imgSrc, Role role) {
         String idKey = String.format("%s_%s_%s_%s", firstName, lastName, phoneNumber, personalNumber);
         this.id = UUID.nameUUIDFromBytes(idKey.getBytes());
 

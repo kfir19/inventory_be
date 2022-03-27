@@ -5,6 +5,7 @@ import com.kfir.inventory_be.repositories.ItemTypesRepository;
 import com.kfir.inventory_be.services.ItemTypesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.UUID;
 

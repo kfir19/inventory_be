@@ -3,6 +3,7 @@ package com.kfir.inventory_be.models;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.UUID;
 
 @Data
@@ -16,7 +17,7 @@ public class ItemType {
     private String displayName;
 
 
-    public ItemType(){
+    public ItemType() {
     }
 
     public ItemType(String type, String displayName) {

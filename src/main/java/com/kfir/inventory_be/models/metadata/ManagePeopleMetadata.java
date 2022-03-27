@@ -14,7 +14,7 @@ public class ManagePeopleMetadata {
     private UUID id;
 
     /*------ MANAGE PEOPLE ----------------*/
-    private String titleManagePeople;
+    private String title;
     private String lblPeopleSearch;
     private String btnLblAddNewPerson;
     private String btnLblEditPerson;
@@ -31,10 +31,10 @@ public class ManagePeopleMetadata {
     private String btnLblCloseNewPerson;
     private String btnLblSaveNewPerson;
 
-    public ManagePeopleMetadata(String titleManagePeople, String lblPeopleSearch, String btnLblAddNewPerson, String btnLblEditPerson, String btnLblDeletePerson, String titleAddNewPerson, String wtrMrkFirstName, String wtrMrkLastName, String wtrMrkPhoneNumber, String wtrMrkPersonalNumber, String wtrMrkRole, String wtrMrkPicture, String btnLblCloseNewPerson, String btnLblSaveNewPerson) {
+    public ManagePeopleMetadata(String title, String lblPeopleSearch, String btnLblAddNewPerson, String btnLblEditPerson, String btnLblDeletePerson, String titleAddNewPerson, String wtrMrkFirstName, String wtrMrkLastName, String wtrMrkPhoneNumber, String wtrMrkPersonalNumber, String wtrMrkRole, String wtrMrkPicture, String btnLblCloseNewPerson, String btnLblSaveNewPerson) {
         String idKey = "manage_people_metadata";
         this.id = UUID.nameUUIDFromBytes(idKey.getBytes());
-        this.titleManagePeople = titleManagePeople;
+        this.title = title;
         this.lblPeopleSearch = lblPeopleSearch;
         this.btnLblAddNewPerson = btnLblAddNewPerson;
         this.btnLblEditPerson = btnLblEditPerson;

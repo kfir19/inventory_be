@@ -14,26 +14,27 @@ public class ItemsOutMetadata {
     private UUID id;
 
     /*------ITEMS OUT----------------*/
-    private String titleItemsOut;
-    private String lblItemsOutSearch;
-    private String tblTitleItemsOutPersonName;
-    private String tblTitleItemsOutPersonRole;
-    private String tblTitleItemsOutItemType;
-    private String tblTitleItemsOutItemSN;
+    private String title;
+    private String lblSearch;
+    private String tblTitlePersonName;
+    private String tblTitlePersonRole;
+    private String tblTitleItemType;
+    private String tblTitleItemSN;
     private String tblBtnReturnItem;
     private String tblBtnPersonDetails;
 
-    public ItemsOutMetadata(){}
+    public ItemsOutMetadata() {
+    }
 
-    public ItemsOutMetadata(String titleItemsOut, String lblItemsOutSearch, String tblTitleItemsOutPersonName, String tblTitleItemsOutPersonRole, String tblTitleItemsOutItemType, String tblTitleItemsOutItemSN, String tblBtnReturnItem, String tblBtnPersonDetails) {
+    public ItemsOutMetadata(String title, String lblSearch, String tblTitlePersonName, String tblTitlePersonRole, String tblTitleItemType, String tblTitleItemSN, String tblBtnReturnItem, String tblBtnPersonDetails) {
         String idKey = "items_out_metadata";
         this.id = UUID.nameUUIDFromBytes(idKey.getBytes());
-        this.titleItemsOut = titleItemsOut;
-        this.lblItemsOutSearch = lblItemsOutSearch;
-        this.tblTitleItemsOutPersonName = tblTitleItemsOutPersonName;
-        this.tblTitleItemsOutPersonRole = tblTitleItemsOutPersonRole;
-        this.tblTitleItemsOutItemType = tblTitleItemsOutItemType;
-        this.tblTitleItemsOutItemSN = tblTitleItemsOutItemSN;
+        this.title = title;
+        this.lblSearch = lblSearch;
+        this.tblTitlePersonName = tblTitlePersonName;
+        this.tblTitlePersonRole = tblTitlePersonRole;
+        this.tblTitleItemType = tblTitleItemType;
+        this.tblTitleItemSN = tblTitleItemSN;
         this.tblBtnReturnItem = tblBtnReturnItem;
         this.tblBtnPersonDetails = tblBtnPersonDetails;
     }

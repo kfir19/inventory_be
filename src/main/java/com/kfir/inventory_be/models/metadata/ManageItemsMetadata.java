@@ -14,11 +14,11 @@ public class ManageItemsMetadata {
     private UUID id;
 
     /*------ MANAGE ITEMS ----------------*/
-    private String titleManageItems;
+    private String title;
     private String lblItemsSearch;
     private String btnLblAddNewItem;
-    private String tblTitleManageItemsItemType;
-    private String tblTitleManageItemsItemSN;
+    private String tblTitleItemType;
+    private String tblTitleItemSN;
     private String tblBtnDeleteItem;
 
     /*------ADD NEW ITEM-----------------*/
@@ -28,14 +28,14 @@ public class ManageItemsMetadata {
     private String btnLblCloseNewItem;
     private String btnLblSaveNewItem;
 
-    public ManageItemsMetadata(String titleManageItems, String lblItemsSearch, String btnLblAddNewItem, String tblTitleManageItemsItemType, String tblTitleManageItemsItemSN, String tblBtnDeleteItem, String titleAddNewItem, String wtrMrkItemType, String wtrMrkSerialNumber, String btnLblCloseNewItem, String btnLblSaveNewItem) {
+    public ManageItemsMetadata(String title, String lblItemsSearch, String btnLblAddNewItem, String tblTitleItemType, String tblTitleItemSN, String tblBtnDeleteItem, String titleAddNewItem, String wtrMrkItemType, String wtrMrkSerialNumber, String btnLblCloseNewItem, String btnLblSaveNewItem) {
         String idKey = "manage_items_metadata";
         this.id = UUID.nameUUIDFromBytes(idKey.getBytes());
-        this.titleManageItems = titleManageItems;
+        this.title = title;
         this.lblItemsSearch = lblItemsSearch;
         this.btnLblAddNewItem = btnLblAddNewItem;
-        this.tblTitleManageItemsItemType = tblTitleManageItemsItemType;
-        this.tblTitleManageItemsItemSN = tblTitleManageItemsItemSN;
+        this.tblTitleItemType = tblTitleItemType;
+        this.tblTitleItemSN = tblTitleItemSN;
         this.tblBtnDeleteItem = tblBtnDeleteItem;
         this.titleAddNewItem = titleAddNewItem;
         this.wtrMrkItemType = wtrMrkItemType;

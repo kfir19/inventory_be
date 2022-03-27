@@ -3,6 +3,7 @@ package com.kfir.inventory_be.models;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.UUID;
 
 @Data
@@ -15,7 +16,8 @@ public class Role {
     private String kind;
     private String displayName;
 
-    public Role(){}
+    public Role() {
+    }
 
     public Role(String kind, String displayName) {
         String idKey = String.format("%s_%s", kind, displayName);

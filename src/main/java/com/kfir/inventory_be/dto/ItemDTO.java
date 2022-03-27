@@ -1,6 +1,7 @@
 package com.kfir.inventory_be.dto;
 
 import lombok.Data;
+
 import java.util.UUID;
 
 @Data
