@@ -1,4 +1,4 @@
-package com.kfir.inventory_be.models.system;
+package com.kfir.inventory_be.models.metadata;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
