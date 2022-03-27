@@ -19,4 +19,14 @@ public class SystemMetadata {
     private String btnLblItemsOut;
     private String btnLblLoanItems;
     private String btnLblDefinitions;
+
+    public SystemMetadata(String btnLblManagePeople, String btnLblManageItems, String btnLblItemsOut, String btnLblLoanItems, String btnLblDefinitions) {
+        String idKey = "system_metadata";
+        this.id = UUID.nameUUIDFromBytes(idKey.getBytes());
+        this.btnLblManagePeople = btnLblManagePeople;
+        this.btnLblManageItems = btnLblManageItems;
+        this.btnLblItemsOut = btnLblItemsOut;
+        this.btnLblLoanItems = btnLblLoanItems;
+        this.btnLblDefinitions = btnLblDefinitions;
+    }
 }
