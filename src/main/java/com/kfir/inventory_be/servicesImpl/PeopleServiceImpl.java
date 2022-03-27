@@ -33,4 +33,9 @@ public class PeopleServiceImpl implements PeopleService {
     public void deletePersonById(UUID id) {
         repo.deletePersonById(id);
     }
+
+    @Override
+    public List<Person> getAllByLinkedItemsIsNotNull() {
+        return repo.getAllByLinkedItemsIsNotNull();
+    }
 }

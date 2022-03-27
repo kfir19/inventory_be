@@ -13,4 +13,6 @@ public interface PeopleService {
     Person saveOrUpdatePerson(Person person);
 
     void deletePersonById(UUID id);
+
+    List<Person> getAllByLinkedItemsIsNotNull();
 }

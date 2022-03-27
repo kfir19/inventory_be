@@ -13,4 +13,8 @@ public interface ItemsService {
     Item saveOrUpdateItem(Item item);
 
     void deleteItemById(UUID id);
+
+    List<Item> getAllByInStock(boolean isInStock);
+
+    List<Item> getAllByLinkedPersonIsNotNull();
 }

@@ -14,4 +14,8 @@ public interface ItemsRepository extends MongoRepository<Item, UUID> {
     Item save(Item item);
 
     void deleteItemById(UUID id);
+
+    List<Item> getAllByInStock(boolean isInStock);
+
+    List<Item> getAllByLinkedPersonIsNotNull();
 }

@@ -41,4 +41,8 @@ public class PeopleRestController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping(value = "/byLinkedItemsNotNull")
+    public List<PersonDTO> getAllByLinkedItemsNotNull() {
+        return ObjectMapperUtils.mapAll(peopleService.getAllByLinkedItemsIsNotNull(), PersonDTO.class);
+    }
 }

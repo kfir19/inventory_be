@@ -33,4 +33,14 @@ public class ItemsServiceImpl implements ItemsService {
     public void deleteItemById(UUID id) {
         repo.deleteItemById(id);
     }
+
+    @Override
+    public List<Item> getAllByInStock(boolean isInStock) {
+        return repo.getAllByInStock(isInStock);
+    }
+
+    @Override
+    public List<Item> getAllByLinkedPersonIsNotNull() {
+        return repo.getAllByLinkedPersonIsNotNull();
+    }
 }
