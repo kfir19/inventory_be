@@ -31,3 +31,22 @@ build/
 
 ### VS Code ###
 .vscode/
+/node_modules/.package-lock.json
+/node_modules/js-md5/CHANGELOG.md
+/node_modules/js-sha1/CHANGELOG.md
+/node_modules/uuid-by-string/index.d.ts
+/node_modules/uuid-by-string/src/index.js
+/node_modules/uuid-by-string/src/lib.js
+/node_modules/uuid-by-string/LICENSE
+/node_modules/js-md5/LICENSE.txt
+/node_modules/js-sha1/LICENSE.txt
+/node_modules/js-md5/src/md5.js
+/node_modules/js-md5/package.json
+/node_modules/js-sha1/package.json
+/node_modules/uuid-by-string/package.json
+/package.json
+/package-lock.json
+/node_modules/js-md5/README.md
+/node_modules/js-sha1/README.md
+/node_modules/uuid-by-string/README.md
+/node_modules/js-sha1/src/sha1.js
