@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -20,7 +20,9 @@ public class Person {
     private String personalNumber;
     private String imgSrc;
     private Role role;
-    private List<UUID> linkedItems;
+    private Set<UUID> linkedItems;
+    private String barcodeValue;
+    private Set<UUID> suggestedItems;
 
     public Person() {
     }

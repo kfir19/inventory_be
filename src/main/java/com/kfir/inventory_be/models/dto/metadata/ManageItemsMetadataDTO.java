@@ -1,4 +1,4 @@
-package com.kfir.inventory_be.dto.metadata;
+package com.kfir.inventory_be.models.dto.metadata;
 
 import lombok.Data;
 

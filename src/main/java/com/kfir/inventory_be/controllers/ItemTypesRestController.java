@@ -1,6 +1,6 @@
 package com.kfir.inventory_be.controllers;
 
-import com.kfir.inventory_be.dto.ItemTypeDTO;
+import com.kfir.inventory_be.models.dto.ItemTypeDTO;
 import com.kfir.inventory_be.models.ItemType;
 import com.kfir.inventory_be.services.ItemTypesService;
 import com.kfir.inventory_be.utils.ObjectMapperUtils;

@@ -1,14 +1,14 @@
-package com.kfir.inventory_be.dto;
+package com.kfir.inventory_be.models.dto;
 
 import lombok.Data;
 
 import java.util.UUID;
 
 @Data
-public class RoleDTO {
+public class ItemTypeDTO {
 
     private UUID id;
 
-    private String kind;
+    private String type;
     private String displayName;
 }

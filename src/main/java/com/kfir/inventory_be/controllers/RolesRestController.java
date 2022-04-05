@@ -1,6 +1,6 @@
 package com.kfir.inventory_be.controllers;
 
-import com.kfir.inventory_be.dto.RoleDTO;
+import com.kfir.inventory_be.models.dto.RoleDTO;
 import com.kfir.inventory_be.models.Role;
 import com.kfir.inventory_be.services.RolesService;
 import com.kfir.inventory_be.utils.ObjectMapperUtils;

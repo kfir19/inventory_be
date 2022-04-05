@@ -1,6 +1,6 @@
 package com.kfir.inventory_be.controllers.metadata;
 
-import com.kfir.inventory_be.dto.metadata.*;
+import com.kfir.inventory_be.models.dto.metadata.*;
 import com.kfir.inventory_be.models.metadata.*;
 import com.kfir.inventory_be.services.metadata.*;
 import com.kfir.inventory_be.utils.ObjectMapperUtils;

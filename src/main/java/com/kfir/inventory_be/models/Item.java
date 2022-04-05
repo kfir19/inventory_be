@@ -13,10 +13,11 @@ public class Item {
     @Id
     private UUID id;
     private UUID linkedPerson;
-
     private int serialNumber;
     private boolean isInStock;
+    private boolean isSuggested;
     private ItemType type;
+    private String barcodeValue;
 
     public Item() {
     }
@@ -27,6 +28,7 @@ public class Item {
         this.serialNumber = serialNumber;
         this.type = type;
         this.isInStock = true;
+        this.isSuggested = false;
     }
 
     @Override

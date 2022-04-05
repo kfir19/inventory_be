@@ -1,8 +1,8 @@
-package com.kfir.inventory_be.dto;
+package com.kfir.inventory_be.models.dto;
 
 import lombok.Data;
 
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -16,6 +16,7 @@ public class PersonDTO {
     private String personalNumber;
     private String imgSrc;
     private RoleDTO role;
-    private List<UUID> linkedItems;
+    private Set<UUID> linkedItems;
+    private Set<UUID> suggestedItems;
 
 }
