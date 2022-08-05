@@ -14,17 +14,17 @@ public class Kit {
     @Id
     private UUID id;
     private UUID kitOwnerId;
-    private UUID leadingItemId;
+    private String displayName;
     private List<UUID> kitItemsIds;
 
     public Kit() {
     }
 
-    public Kit(UUID kitOwnerId, UUID leadingItemId, List<UUID> kitItemsIds) {
-        String idKey = String.format("%s_%s_%s", kitOwnerId, leadingItemId);
+    public Kit(UUID kitOwnerId, String displayName, List<UUID> kitItemsIds) {
+        String idKey = String.format("%s", displayName);
         this.id = UUID.nameUUIDFromBytes(idKey.getBytes());
+        this.displayName = displayName;
         this.kitOwnerId = kitOwnerId;
-        this.leadingItemId = leadingItemId;
         this.kitItemsIds = kitItemsIds;
     }
 }

@@ -16,6 +16,7 @@ public class Item {
     private int serialNumber;
     private boolean isInStock;
     private boolean isSuggested;
+    private UUID kitUUID;
     private ItemType type;
     private String barcodeValue;
 

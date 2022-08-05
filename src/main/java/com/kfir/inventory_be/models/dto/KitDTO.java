@@ -9,6 +9,6 @@ import java.util.UUID;
 public class KitDTO {
     private UUID id;
     private UUID kitOwnerId;
-    private UUID leadingItemId;
+    private String displayName;
     private List<UUID> kitItemsIds;
 }

@@ -14,4 +14,5 @@ public class ItemDTO {
     private ItemTypeDTO type;
     private String barcodeValue;
     private boolean isSuggested;
+    private UUID kitUUID;
 }

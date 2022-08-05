@@ -1,5 +1,6 @@
 package com.kfir.inventory_be.repositories;
 
+import com.kfir.inventory_be.models.Kit;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

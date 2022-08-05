@@ -1,5 +1,7 @@
 package com.kfir.inventory_be.services;
 
+import com.kfir.inventory_be.models.Kit;
+
 import java.util.List;
 import java.util.UUID;
 
