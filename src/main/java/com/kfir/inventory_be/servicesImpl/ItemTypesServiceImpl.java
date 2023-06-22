@@ -34,4 +34,9 @@ public class ItemTypesServiceImpl implements ItemTypesService {
     public void deleteItemTypeById(UUID id) {
         repo.deleteItemTypeById(id);
     }
+
+    @Override
+    public List<ItemType> saveAll(List<ItemType> itemTypes) {
+        return repo.saveAll(itemTypes);
+    }
 }

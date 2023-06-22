@@ -13,23 +13,23 @@ public class ItemType {
     @Id
     private UUID id;
 
-    private String type;
+    private String typeId;
     private String displayName;
 
 
     public ItemType() {
     }
 
-    public ItemType(String type, String displayName) {
-        String idKey = String.format("%s_%s", type, displayName);
+    public ItemType(String typeId, String displayName) {
+        String idKey = String.format("%s_%s", typeId, displayName);
         this.id = UUID.nameUUIDFromBytes(idKey.getBytes());
-        this.type = type;
+        this.typeId = typeId;
         this.displayName = displayName;
     }
 
     @Override
     public String toString() {
-        return type;
+        return this.displayName;
     }
 
 }

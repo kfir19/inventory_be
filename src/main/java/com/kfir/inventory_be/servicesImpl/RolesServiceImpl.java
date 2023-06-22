@@ -34,4 +34,9 @@ public class RolesServiceImpl implements RolesService {
     public void deleteRoleById(UUID id) {
         repo.deleteRoleById(id);
     }
+
+    @Override
+    public List<Role> saveAll(List<Role> roles) {
+        return repo.saveAll(roles);
+    }
 }

@@ -12,11 +12,14 @@ public class PersonDTO {
 
     private String firstName;
     private String lastName;
+    private String displayName;
     private String phoneNumber;
     private String personalNumber;
     private String imgSrc;
     private RoleDTO role;
     private Set<UUID> linkedItems;
+    private Set<UUID> linkedKits;
+    private String barcodeValue;
     private Set<UUID> suggestedItems;
 
 }

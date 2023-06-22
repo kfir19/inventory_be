@@ -16,11 +16,14 @@ public class Person {
 
     private String firstName;
     private String lastName;
+
+    private String displayName;
     private String phoneNumber;
     private String personalNumber;
     private String imgSrc;
     private Role role;
     private Set<UUID> linkedItems;
+    private Set<UUID> linkedKits;
     private String barcodeValue;
     private Set<UUID> suggestedItems;
 
@@ -33,6 +36,7 @@ public class Person {
 
         this.firstName = firstName;
         this.lastName = lastName;
+        this.displayName = firstName + " " + lastName;
         this.phoneNumber = phoneNumber;
         this.personalNumber = personalNumber;
         this.imgSrc = imgSrc;
@@ -41,7 +45,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return String.format("%s - %s", firstName, lastName);
+        return this.displayName;
     }
 
 }

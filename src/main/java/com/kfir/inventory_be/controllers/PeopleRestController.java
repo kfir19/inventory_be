@@ -27,7 +27,7 @@ public class PeopleRestController {
 
     @GetMapping(value = "/byId/{id}")
     public PersonDTO getPersonById(@PathVariable("id") UUID personId) {
-        return ObjectMapperUtils.map(peopleService.findPersonById(personId), PersonDTO.class);
+        return ObjectMapperUtils.map(peopleService.findById(personId), PersonDTO.class);
     }
 
     @PostMapping(value = "/save")
@@ -38,12 +38,24 @@ public class PeopleRestController {
 
     @DeleteMapping(value = "/delete/{personId}")
     public ResponseEntity<PersonDTO> deletePersonById(@PathVariable("personId") UUID personId) {
-        peopleService.deletePersonById(peopleService.findPersonById(personId).getId());
+        if((peopleService.findById(personId)).isPresent()) {
+            peopleService.deleteById((peopleService.findById(personId)).get().getId());
+        }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping(value = "/byLinkedItemsNotNull")
     public List<PersonDTO> getAllByLinkedItemsNotNull() {
         return ObjectMapperUtils.mapAll(peopleService.getAllByLinkedItemsIsNotNull(), PersonDTO.class);
+    }
+
+    @GetMapping(value = "/byLinkedKitsNotNull")
+    public List<PersonDTO> getAllByLinkedKitsNotNull() {
+        return ObjectMapperUtils.mapAll(peopleService.getAllByLinkedKitsIsNotNull(), PersonDTO.class);
+    }
+
+    @GetMapping(value = "/byLinkedKitsOrItemsNotNull")
+    public List<PersonDTO> getAllByLinkedKitsOrItemsNull() {
+        return ObjectMapperUtils.mapAll(peopleService.getAllByLinkedItemsIsNotNullOrLinkedKitsIsNotNull(), PersonDTO.class);
     }
 }

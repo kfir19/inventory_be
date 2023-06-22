@@ -44,4 +44,9 @@ public class ItemsServiceImpl implements ItemsService {
     public List<Item> getAllByLinkedPersonIsNotNull() {
         return repo.getAllByLinkedPersonIsNotNull();
     }
+
+    @Override
+    public List<Item> saveAll(List<Item> items) {
+        return repo.saveAll(items);
+    }
 }

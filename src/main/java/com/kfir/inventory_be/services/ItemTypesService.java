@@ -15,4 +15,6 @@ public interface ItemTypesService {
 
     void deleteItemTypeById(UUID id);
 
+    List<ItemType> saveAll(List<ItemType> itemTypes);
+
 }

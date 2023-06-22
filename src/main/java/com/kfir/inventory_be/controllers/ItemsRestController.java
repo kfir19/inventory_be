@@ -36,6 +36,12 @@ public class ItemsRestController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
+    @PostMapping(value = "/saveAll")
+    public ResponseEntity<List<ItemDTO>> saveOrUpdateItem(@RequestBody List<ItemDTO> itemDTOs) {
+        itemsService.saveAll(ObjectMapperUtils.mapAll(itemDTOs, Item.class));
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
     @DeleteMapping(value = "/delete/{itemId}")
     public ResponseEntity<ItemDTO> deleteItemById(@PathVariable("itemId") UUID itemId) {
         itemsService.deleteItemById(itemsService.findItemById(itemId).getId());

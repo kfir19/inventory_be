@@ -9,6 +9,6 @@ public class ItemTypeDTO {
 
     private UUID id;
 
-    private String type;
+    private String typeId;
     private String displayName;
 }

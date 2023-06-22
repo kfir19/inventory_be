@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -16,15 +17,19 @@ public class Item {
     private int serialNumber;
     private boolean isInStock;
     private boolean isSuggested;
-    private UUID kitUUID;
+    private UUID linkedKit;
     private ItemType type;
     private String barcodeValue;
+    private String timeStamp;
+    private String kitDisplayName;
+    private List<UUID> kitItemsIds;
+    private boolean isTypeKit;
 
     public Item() {
     }
 
     public Item(int serialNumber, ItemType type) {
-        String idKey = String.format("%s_%s", serialNumber, type.getType());
+        String idKey = String.format("%s_%s", serialNumber, type.getTypeId());
         this.id = UUID.nameUUIDFromBytes(idKey.getBytes());
         this.serialNumber = serialNumber;
         this.type = type;

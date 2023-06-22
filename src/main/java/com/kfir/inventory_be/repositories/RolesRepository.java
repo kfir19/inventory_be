@@ -14,6 +14,9 @@ public interface RolesRepository extends MongoRepository<Role, UUID> {
 
     Role save(Role role);
 
+    @Override
+    <S extends Role> List<S> saveAll(Iterable<S> entities);
+
     void deleteRoleById(UUID id);
 
 }

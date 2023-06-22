@@ -14,5 +14,8 @@ public interface ItemTypesRepository extends MongoRepository<ItemType, UUID> {
 
     ItemType save(ItemType itemType);
 
+    @Override
+    <S extends ItemType> List<S> saveAll(Iterable<S> entities);
+
     void deleteItemTypeById(UUID id);
 }

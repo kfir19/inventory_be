@@ -18,4 +18,6 @@ public interface ItemsService {
     List<Item> getAllByInStock(boolean isInStock);
 
     List<Item> getAllByLinkedPersonIsNotNull();
+
+    List<Item> saveAll(List<Item> items);
 }

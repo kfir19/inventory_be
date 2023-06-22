@@ -19,4 +19,7 @@ public interface ItemsRepository extends MongoRepository<Item, UUID> {
     List<Item> getAllByInStock(boolean isInStock);
 
     List<Item> getAllByLinkedPersonIsNotNull();
+
+    @Override
+    <S extends Item> List<S> saveAll(Iterable<S> entities);
 }

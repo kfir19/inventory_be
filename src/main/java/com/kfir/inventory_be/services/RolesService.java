@@ -15,4 +15,6 @@ public interface RolesService {
 
     void deleteRoleById(UUID id);
 
+    List<Role> saveAll(List<Role> roles);
+
 }
