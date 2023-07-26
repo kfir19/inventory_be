@@ -21,8 +21,5 @@ public interface PeopleRepository extends MongoRepository<Person, UUID> {
     void deleteById(UUID id);
 
     List<Person> getAllByLinkedItemsIsNotNull();
-
-    List<Person> getAllByLinkedKitsIsNotNull();
-
-    List<Person> getAllByLinkedItemsIsNotNullOrLinkedKitsIsNotNull();
 }
+

@@ -21,7 +21,6 @@ public class Item {
     private ItemType type;
     private String barcodeValue;
     private String timeStamp;
-    private String kitDisplayName;
     private List<UUID> kitItemsIds;
     private boolean isTypeKit;
 
@@ -35,6 +34,7 @@ public class Item {
         this.type = type;
         this.isInStock = true;
         this.isSuggested = false;
+        this.isTypeKit = false;
     }
 
     @Override

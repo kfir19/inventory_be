@@ -45,12 +45,4 @@ public class PeopleServiceImpl implements PeopleService {
     public List<Person> getAllByLinkedItemsIsNotNull() {
         return repo.getAllByLinkedItemsIsNotNull();
     }
-
-    public List<Person> getAllByLinkedKitsIsNotNull() {
-        return repo.getAllByLinkedKitsIsNotNull();
-    }
-
-    public List<Person> getAllByLinkedItemsIsNotNullOrLinkedKitsIsNotNull() {
-        return repo.getAllByLinkedItemsIsNotNullOrLinkedKitsIsNotNull();
-    }
 }

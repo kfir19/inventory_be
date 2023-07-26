@@ -23,12 +23,10 @@ public class Person {
     private String imgSrc;
     private Role role;
     private Set<UUID> linkedItems;
-    private Set<UUID> linkedKits;
     private String barcodeValue;
     private Set<UUID> suggestedItems;
 
-    public Person() {
-    }
+    public Person() { }
 
     public Person(String firstName, String lastName, String phoneNumber, String personalNumber, String imgSrc, Role role) {
         String idKey = String.format("%s_%s_%s_%s", firstName, lastName, phoneNumber, personalNumber);

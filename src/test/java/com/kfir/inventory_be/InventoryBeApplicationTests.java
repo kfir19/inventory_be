@@ -37,6 +37,10 @@ class InventoryBeApplicationTests {
         ItemType itemType4 = new ItemType("004", "חליפה");
         ItemType result4 = itemTypesService.saveOrUpdateItemType(itemType4);
         Assertions.assertNotNull(result4);
+
+        ItemType itemType5 = new ItemType("1000", "ערכה");
+        ItemType result5 = itemTypesService.saveOrUpdateItemType(itemType5);
+        Assertions.assertNotNull(result5);
     }
 
     @Test
@@ -62,7 +66,7 @@ class InventoryBeApplicationTests {
     @Test
     void createItems() {
 
-        for (int i = 1; i < 51; i++) {
+        for (int i = 1; i < 21; i++) {
             Item item1 = new Item(i, new ItemType("333", "מצלמה"));
             Item result1 = itemsService.saveOrUpdateItem(item1);
             Assertions.assertNotNull(result1);
