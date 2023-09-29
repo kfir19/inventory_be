@@ -56,14 +56,4 @@ public class PeopleRestController {
     public List<PersonDTO> getAllByLinkedItemsNotNull() {
         return ObjectMapperUtils.mapAll(peopleService.getAllByLinkedItemsIsNotNull(), PersonDTO.class);
     }
-
-    @GetMapping(value = "/byLinkedKitsNotNull")
-    public List<PersonDTO> getAllByLinkedKitsNotNull() {
-        return ObjectMapperUtils.mapAll(peopleService.getAllByLinkedKitsIsNotNull(), PersonDTO.class);
-    }
-
-    @GetMapping(value = "/byLinkedKitsOrItemsNotNull")
-    public List<PersonDTO> getAllByLinkedKitsOrItemsNull() {
-        return ObjectMapperUtils.mapAll(peopleService.getAllByLinkedItemsIsNotNullOrLinkedKitsIsNotNull(), PersonDTO.class);
-    }
 }

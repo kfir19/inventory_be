@@ -20,7 +20,4 @@ public interface PeopleService {
 
     List<Person> getAllByLinkedItemsIsNotNull();
 
-    List<Person> getAllByLinkedKitsIsNotNull();
-
-    List<Person> getAllByLinkedItemsIsNotNullOrLinkedKitsIsNotNull();
 }

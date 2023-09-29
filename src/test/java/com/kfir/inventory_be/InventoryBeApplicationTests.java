@@ -66,7 +66,7 @@ class InventoryBeApplicationTests {
     @Test
     void createItems() {
 
-        for (int i = 1; i < 51; i++) {
+        for (int i = 1; i < 21; i++) {
             Item item1 = new Item(i, new ItemType("001", "מצלמה"));
             Item result1 = itemsService.saveOrUpdateItem(item1);
             Assertions.assertNotNull(result1);

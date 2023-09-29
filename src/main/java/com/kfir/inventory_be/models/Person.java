@@ -26,8 +26,7 @@ public class Person {
     private Set<UUID> linkedKits;
     private Set<UUID> suggestedItems;
 
-    public Person() {
-    }
+    public Person() { }
 
     public Person(String firstName, String lastName, String phoneNumber, String personalNumber, String imgSrc, Role role) {
         String idKey = String.format("%s_%s_%s_%s", firstName, lastName, phoneNumber, personalNumber);

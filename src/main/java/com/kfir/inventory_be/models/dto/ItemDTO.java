@@ -17,7 +17,6 @@ public class ItemDTO {
     private UUID linkedKit;
     private ItemType type;
     private String timeStamp;
-    private String kitDisplayName;
     private List<UUID> kitItemsIds;
     private boolean isTypeKit;
 }
