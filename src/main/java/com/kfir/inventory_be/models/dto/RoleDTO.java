@@ -9,6 +9,5 @@ public class RoleDTO {
 
     private UUID id;
 
-    private String kind;
     private String displayName;
 }

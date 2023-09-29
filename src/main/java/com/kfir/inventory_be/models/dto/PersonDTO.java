@@ -19,7 +19,6 @@ public class PersonDTO {
     private RoleDTO role;
     private Set<UUID> linkedItems;
     private Set<UUID> linkedKits;
-    private String barcodeValue;
     private Set<UUID> suggestedItems;
 
 }

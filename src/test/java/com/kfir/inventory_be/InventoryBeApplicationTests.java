@@ -22,11 +22,11 @@ class InventoryBeApplicationTests {
     @Test
     void createItemTypes() {
 
-        ItemType itemType1 = new ItemType("333", "מצלמה");
+        ItemType itemType1 = new ItemType("001", "מצלמה");
         ItemType result1 = itemTypesService.saveOrUpdateItemType(itemType1);
         Assertions.assertNotNull(result1);
 
-        ItemType itemType2 = new ItemType("888", "תג");
+        ItemType itemType2 = new ItemType("002", "תג");
         ItemType result2 = itemTypesService.saveOrUpdateItemType(itemType2);
         Assertions.assertNotNull(result2);
 
@@ -37,24 +37,28 @@ class InventoryBeApplicationTests {
         ItemType itemType4 = new ItemType("004", "חליפה");
         ItemType result4 = itemTypesService.saveOrUpdateItemType(itemType4);
         Assertions.assertNotNull(result4);
+
+        ItemType itemType5 = new ItemType("1000", "ערכה");
+        ItemType result5 = itemTypesService.saveOrUpdateItemType(itemType5);
+        Assertions.assertNotNull(result5);
     }
 
     @Test
     void createRoles() {
 
-        Role role1 = new Role("RESERVE", "מילואים");
+        Role role1 = new Role("מילואים");
         Role result1 = rolesService.saveOrUpdateRole(role1);
         Assertions.assertNotNull(result1);
 
-        Role role2 = new Role("RECRUIT", "סדיר");
+        Role role2 = new Role("סדיר");
         Role result2 = rolesService.saveOrUpdateRole(role2);
         Assertions.assertNotNull(result2);
 
-        Role role3 = new Role("EMA", "הצ'ח");
+        Role role3 = new Role("הצ'ח");
         Role result3 = rolesService.saveOrUpdateRole(role3);
         Assertions.assertNotNull(result3);
 
-        Role role4 = new Role("GUEST", "אורח");
+        Role role4 = new Role("אורח");
         Role result4 = rolesService.saveOrUpdateRole(role4);
         Assertions.assertNotNull(result4);
     }
@@ -63,11 +67,11 @@ class InventoryBeApplicationTests {
     void createItems() {
 
         for (int i = 1; i < 51; i++) {
-            Item item1 = new Item(i, new ItemType("333", "מצלמה"));
+            Item item1 = new Item(i, new ItemType("001", "מצלמה"));
             Item result1 = itemsService.saveOrUpdateItem(item1);
             Assertions.assertNotNull(result1);
 
-            Item item2 = new Item(i, new ItemType("888", "תג"));
+            Item item2 = new Item(i, new ItemType("002", "תג"));
             Item result2 = itemsService.saveOrUpdateItem(item2);
             Assertions.assertNotNull(result2);
 
@@ -84,23 +88,23 @@ class InventoryBeApplicationTests {
     @Test
     void createPeople() {
 
-        Person person1 = new Person("כפיר", "גבאי", "0524697526", "7088703", "../../pic", new Role("RESERVE", "מילואים"));
+        Person person1 = new Person("כפיר", "גבאי", "0524697526", "7088703", "../../pic", new Role("מילואים"));
         Person result1 = peopleService.saveOrUpdatePerson(person1);
         Assertions.assertNotNull(result1);
 
-        Person person2 = new Person("כרמית", "גבאי", "0524690435", "1234567", "../../pic", new Role("RECRUIT", "סדיר"));
+        Person person2 = new Person("כרמית", "גבאי", "0524690435", "1234567", "../../pic", new Role("סדיר"));
         Person result2 = peopleService.saveOrUpdatePerson(person2);
         Assertions.assertNotNull(result2);
 
-        Person person3 = new Person("עומר", "גבאי", "0514682513", "7654321", "../../pic", new Role("EMA", "הצ'ח"));
+        Person person3 = new Person("עומר", "גבאי", "0514682513", "7654321", "../../pic", new Role("הצ'ח"));
         Person result3 = peopleService.saveOrUpdatePerson(person3);
         Assertions.assertNotNull(result3);
 
-        Person person4 = new Person("עמית", "גבאי", "0545872213", "9632587", "../../pic", new Role("GUEST", "אורח"));
+        Person person4 = new Person("עמית", "גבאי", "0545872213", "9632587", "../../pic", new Role("אורח"));
         Person result4 = peopleService.saveOrUpdatePerson(person4);
         Assertions.assertNotNull(result4);
 
-        Person person5 = new Person("עידו", "גבאי", "0545872693", "96454557", "../../pic", new Role("GUEST", "אורח"));
+        Person person5 = new Person("עידו", "גבאי", "0545872693", "96454557", "../../pic", new Role("אורח"));
         Person result5 = peopleService.saveOrUpdatePerson(person5);
         Assertions.assertNotNull(result5);
     }

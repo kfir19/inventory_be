@@ -1,5 +1,6 @@
 package com.kfir.inventory_be.controllers;
 
+import com.kfir.inventory_be.models.Item;
 import com.kfir.inventory_be.models.dto.RoleDTO;
 import com.kfir.inventory_be.models.Role;
 import com.kfir.inventory_be.services.RolesService;
@@ -7,6 +8,7 @@ import com.kfir.inventory_be.utils.ObjectMapperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,7 +22,6 @@ public class RolesRestController {
     @Autowired
     private RolesService rolesService;
 
-
     @GetMapping(value = "/")
     public List<RoleDTO> getAllRoles() {
         return ObjectMapperUtils.mapAll(rolesService.findAll(), RoleDTO.class);
@@ -33,13 +34,21 @@ public class RolesRestController {
 
     @PostMapping(value = "/save")
     public ResponseEntity<RoleDTO> saveOrUpdateRole(@RequestBody RoleDTO roleDTO) {
-        rolesService.saveOrUpdateRole(ObjectMapperUtils.map(roleDTO, Role.class));
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        try {
+            rolesService.saveOrUpdateRole(ObjectMapperUtils.map(roleDTO, Role.class));
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/delete/{roleId}")
     public ResponseEntity<RoleDTO> deleteRoleById(@PathVariable("roleId") UUID roleId) {
-        rolesService.deleteRoleById(rolesService.findRoleById(roleId).getId());
+        try {
+            rolesService.deleteRoleById(roleId);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -24,7 +24,6 @@ public class Person {
     private Role role;
     private Set<UUID> linkedItems;
     private Set<UUID> linkedKits;
-    private String barcodeValue;
     private Set<UUID> suggestedItems;
 
     public Person() {

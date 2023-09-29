@@ -13,22 +13,19 @@ public class Role {
     @Id
     private UUID id;
 
-    private String kind;
     private String displayName;
 
     public Role() {
     }
 
-    public Role(String kind, String displayName) {
-        String idKey = String.format("%s_%s", kind, displayName);
-        this.id = UUID.nameUUIDFromBytes(idKey.getBytes());
-        this.kind = kind;
+    public Role(String displayName) {
+        this.id = UUID.nameUUIDFromBytes(displayName.getBytes());
         this.displayName = displayName;
     }
 
     @Override
     public String toString() {
-        return kind;
+        return displayName;
     }
 
 }

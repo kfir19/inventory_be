@@ -1,5 +1,6 @@
 package com.kfir.inventory_be.controllers;
 
+import com.kfir.inventory_be.models.Person;
 import com.kfir.inventory_be.models.dto.ItemDTO;
 import com.kfir.inventory_be.models.Item;
 import com.kfir.inventory_be.services.ItemsService;
@@ -7,6 +8,7 @@ import com.kfir.inventory_be.utils.ObjectMapperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,19 +34,31 @@ public class ItemsRestController {
 
     @PostMapping(value = "/save")
     public ResponseEntity<ItemDTO> saveOrUpdateItem(@RequestBody ItemDTO itemDTO) {
-        itemsService.saveOrUpdateItem(ObjectMapperUtils.map(itemDTO, Item.class));
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        try {
+            itemsService.saveOrUpdateItem(ObjectMapperUtils.map(itemDTO, Item.class));
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @PostMapping(value = "/saveAll")
     public ResponseEntity<List<ItemDTO>> saveOrUpdateItem(@RequestBody List<ItemDTO> itemDTOs) {
-        itemsService.saveAll(ObjectMapperUtils.mapAll(itemDTOs, Item.class));
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        try {
+            itemsService.saveAll(ObjectMapperUtils.mapAll(itemDTOs, Item.class));
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/delete/{itemId}")
     public ResponseEntity<ItemDTO> deleteItemById(@PathVariable("itemId") UUID itemId) {
-        itemsService.deleteItemById(itemsService.findItemById(itemId).getId());
+        try {
+            itemsService.deleteItemById(itemId);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

@@ -7,6 +7,7 @@ import com.kfir.inventory_be.utils.ObjectMapperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,15 +33,22 @@ public class PeopleRestController {
 
     @PostMapping(value = "/save")
     public ResponseEntity<PersonDTO> saveOrUpdatePerson(@RequestBody PersonDTO personDTO) {
-        peopleService.saveOrUpdatePerson(ObjectMapperUtils.map(personDTO, Person.class));
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        try {
+            peopleService.saveOrUpdatePerson(ObjectMapperUtils.map(personDTO, Person.class));
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/delete/{personId}")
     public ResponseEntity<PersonDTO> deletePersonById(@PathVariable("personId") UUID personId) {
-        if((peopleService.findById(personId)).isPresent()) {
-            peopleService.deleteById((peopleService.findById(personId)).get().getId());
+        try {
+            peopleService.deleteById(personId);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

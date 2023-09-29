@@ -16,7 +16,6 @@ public class ItemDTO {
     private boolean isSuggested;
     private UUID linkedKit;
     private ItemType type;
-    private String barcodeValue;
     private String timeStamp;
     private String kitDisplayName;
     private List<UUID> kitItemsIds;
