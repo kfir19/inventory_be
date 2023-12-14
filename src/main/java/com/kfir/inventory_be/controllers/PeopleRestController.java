@@ -1,5 +1,7 @@
 package com.kfir.inventory_be.controllers;
 
+import com.kfir.inventory_be.models.Item;
+import com.kfir.inventory_be.models.dto.ItemDTO;
 import com.kfir.inventory_be.models.dto.PersonDTO;
 import com.kfir.inventory_be.models.Person;
 import com.kfir.inventory_be.services.PeopleService;
@@ -35,6 +37,16 @@ public class PeopleRestController {
     public ResponseEntity<PersonDTO> saveOrUpdatePerson(@RequestBody PersonDTO personDTO) {
         try {
             peopleService.saveOrUpdatePerson(ObjectMapperUtils.map(personDTO, Person.class));
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity(HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/saveAll")
+    public ResponseEntity<List<PersonDTO>> saveAll(@RequestBody List<PersonDTO> personDTOs) {
+        try {
+            peopleService.saveAll(ObjectMapperUtils.mapAll(personDTOs, Person.class));
         } catch (Exception e) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
