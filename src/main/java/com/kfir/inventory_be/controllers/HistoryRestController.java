@@ -1,5 +1,6 @@
 package com.kfir.inventory_be.controllers;
 
+import com.kfir.inventory_be.data.AggregatedHistory;
 import com.kfir.inventory_be.models.History;
 import com.kfir.inventory_be.models.Item;
 import com.kfir.inventory_be.models.dto.HistoryDTO;
@@ -43,13 +44,53 @@ public class HistoryRestController {
         return ObjectMapperUtils.mapAll(historyService.getAllByPersonId(personId), HistoryDTO.class);
     }
 
-    @GetMapping(value = "/allByPersonIdSorted/{id}")
-    public List<HistoryDTO> getAllHistoryByPersonIdSorted(@PathVariable("id") UUID personId) {
+    @GetMapping(value = "/allByPersonIdSortedByTimeAsc/{id}")
+    public List<HistoryDTO> getAllHistoryByPersonIdSortedByTimeAsc(@PathVariable("id") UUID personId) {
         return ObjectMapperUtils.mapAll(historyService.findByPersonIdOrderByTimeAsc(personId), HistoryDTO.class);
     }
 
-    @GetMapping(value = "/allByPersonIdAggregated/{id}")
-    public List<HistoryDTO> getAllHistoryByPersonIdAggregated(@PathVariable("id") UUID personId) {
-        return ObjectMapperUtils.mapAll(historyService.getHistoryByPersonIdOrderByDate(personId), HistoryDTO.class);
+    @GetMapping(value = "/allByItemIdSortedByTimeAsc/{id}")
+    public List<HistoryDTO> getAllHistoryByItemIdSortedByTimeAsc(@PathVariable("id") UUID itemId) {
+        return ObjectMapperUtils.mapAll(historyService.findByItemIdOrderByTimeAsc(itemId), HistoryDTO.class);
+    }
+
+    @GetMapping(value = "/allByPersonIdSortedByDateAsc/{id}")
+    public List<HistoryDTO> getAllHistoryByPersonIdSortedByDateAsc(@PathVariable("id") UUID personId) {
+        return ObjectMapperUtils.mapAll(historyService.findByPersonIdOrderByDateAsc(personId), HistoryDTO.class);
+    }
+
+    @GetMapping(value = "/allByItemIdSortedByDateAsc/{id}")
+    public List<HistoryDTO> getAllHistoryByItemIdSortedByDateAsc(@PathVariable("id") UUID itemId) {
+        return ObjectMapperUtils.mapAll(historyService.findByItemIdOrderByDateAsc(itemId), HistoryDTO.class);
+    }
+
+    @GetMapping(value = "/allByPersonIdSortedByTimeDesc/{id}")
+    public List<HistoryDTO> getAllHistoryByPersonIdSortedByTimeDesc(@PathVariable("id") UUID personId) {
+        return ObjectMapperUtils.mapAll(historyService.findByPersonIdOrderByTimeDesc(personId), HistoryDTO.class);
+    }
+
+    @GetMapping(value = "/allByItemIdSortedByTimeDesc/{id}")
+    public List<HistoryDTO> getAllHistoryByItemIdSortedByTimeDesc(@PathVariable("id") UUID itemId) {
+        return ObjectMapperUtils.mapAll(historyService.findByItemIdOrderByTimeDesc(itemId), HistoryDTO.class);
+    }
+
+    @GetMapping(value = "/allByPersonIdSortedByDateDesc/{id}")
+    public List<HistoryDTO> getAllHistoryByPersonIdSortedByDateDesc(@PathVariable("id") UUID personId) {
+        return ObjectMapperUtils.mapAll(historyService.findByPersonIdOrderByDateDesc(personId), HistoryDTO.class);
+    }
+
+    @GetMapping(value = "/allByItemIdSortedByDateDesc/{id}")
+    public List<HistoryDTO> getAllHistoryByItemIdSortedByDateDesc(@PathVariable("id") UUID itemId) {
+        return ObjectMapperUtils.mapAll(historyService.findByItemIdOrderByDateDesc(itemId), HistoryDTO.class);
+    }
+
+    @GetMapping(value = "/aggregatedByPersonId/{id}")
+    public AggregatedHistory getAggregatedHistoryByPersonId(@PathVariable("id") UUID personId) {
+        return ObjectMapperUtils.map(historyService.findAggregatedHistoryByPersonId(personId), AggregatedHistory.class);
+    }
+
+    @GetMapping(value = "/aggregatedByItemId/{id}")
+    public AggregatedHistory getAggregatedHistoryByItemId(@PathVariable("id") UUID itemId) {
+        return ObjectMapperUtils.map(historyService.findAggregatedHistoryByItemId(itemId), AggregatedHistory.class);
     }
 }
