@@ -1,15 +1,13 @@
 package com.kfir.inventory_be.controllers;
 
-import com.kfir.inventory_be.models.Item;
-import com.kfir.inventory_be.models.dto.ItemDTO;
-import com.kfir.inventory_be.models.dto.PersonDTO;
+import com.kfir.inventory_be.data.PeopleToItems;
 import com.kfir.inventory_be.models.Person;
+import com.kfir.inventory_be.models.dto.PersonDTO;
 import com.kfir.inventory_be.services.PeopleService;
 import com.kfir.inventory_be.utils.ObjectMapperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,9 +26,19 @@ public class PeopleRestController {
         return ObjectMapperUtils.mapAll(peopleService.findAll(), PersonDTO.class);
     }
 
+    @GetMapping(value = "/getAllPeopleWithLinkedItems")
+    public PeopleToItems getAllPeopleWithLinkedItems() {
+        return ObjectMapperUtils.map(peopleService.findAllPeopleWithLinkedItems(), PeopleToItems.class);
+    }
+
     @GetMapping(value = "/byId/{id}")
     public PersonDTO getPersonById(@PathVariable("id") UUID personId) {
         return ObjectMapperUtils.map(peopleService.findById(personId), PersonDTO.class);
+    }
+
+    @GetMapping(value = "/personWithSuggestedItem/{id}")
+    public PersonDTO findPersonWithSuggestedItem(@PathVariable("id") UUID itemId) {
+        return ObjectMapperUtils.map(peopleService.findPersonWithSuggestedItem(itemId), PersonDTO.class);
     }
 
     @PostMapping(value = "/save")

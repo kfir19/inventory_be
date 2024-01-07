@@ -87,7 +87,6 @@ public class HistoryServiceImpl implements HistoryService {
 
         return aggregatedHistory;
     }
-
     @Override
     public AggregatedHistory findAggregatedHistoryByItemId(UUID id) {
 

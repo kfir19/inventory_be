@@ -1,5 +1,6 @@
 package com.kfir.inventory_be.repositories;
 
+import com.kfir.inventory_be.data.PeopleToItems;
 import com.kfir.inventory_be.models.Person;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
@@ -21,5 +22,7 @@ public interface PeopleRepository extends MongoRepository<Person, UUID> {
     void deleteById(UUID id);
 
     List<Person> getAllByLinkedItemsIsNotNull();
+
+    List<Person> getAllBySuggestedItemsIsNotNull();
 }
 

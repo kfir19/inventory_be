@@ -6,8 +6,7 @@ import com.kfir.inventory_be.services.ItemsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class ItemsServiceImpl implements ItemsService {
@@ -18,6 +17,11 @@ public class ItemsServiceImpl implements ItemsService {
     @Override
     public List<Item> findAll() {
         return repo.findAll();
+    }
+
+    @Override
+    public Iterable<Item> findAllById(Iterable<UUID> ids) {
+        return repo.findAllById(ids);
     }
 
     @Override
@@ -48,5 +52,26 @@ public class ItemsServiceImpl implements ItemsService {
     @Override
     public List<Item> saveAll(List<Item> items) {
         return repo.saveAll(items);
+    }
+
+    @Override
+    public Map<String,List<Item>> getAllItemsInCategories() {
+
+        Map<String ,List<Item>> categorizedItems = new HashMap<>();
+
+        List<Item> allItems = findAll();
+
+        allItems.stream().forEach(item -> {
+
+            String itemDisplayName = item.getType().getDisplayName();
+
+            if (categorizedItems.containsKey(item.getType().getDisplayName())) {
+                categorizedItems.get(itemDisplayName).add(item);
+            } else {
+                categorizedItems.put(itemDisplayName,new ArrayList<>(){{add(item);}});
+            }
+        });
+
+        return categorizedItems;
     }
 }

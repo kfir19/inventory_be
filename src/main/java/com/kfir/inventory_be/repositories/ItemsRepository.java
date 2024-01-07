@@ -10,6 +10,8 @@ public interface ItemsRepository extends MongoRepository<Item, UUID> {
 
     List<Item> findAll();
 
+    Iterable<Item> findAllById(Iterable<UUID> ids);
+
     Item findItemById(UUID id);
 
     Item save(Item item);

@@ -2,11 +2,8 @@ package com.kfir.inventory_be.controllers;
 
 import com.kfir.inventory_be.data.AggregatedHistory;
 import com.kfir.inventory_be.models.History;
-import com.kfir.inventory_be.models.Item;
 import com.kfir.inventory_be.models.dto.HistoryDTO;
-import com.kfir.inventory_be.models.dto.ItemDTO;
 import com.kfir.inventory_be.services.HistoryService;
-import com.kfir.inventory_be.services.ItemsService;
 import com.kfir.inventory_be.utils.ObjectMapperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

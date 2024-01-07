@@ -1,5 +1,6 @@
 package com.kfir.inventory_be.services;
 
+import com.kfir.inventory_be.data.PeopleToItems;
 import com.kfir.inventory_be.models.Person;
 
 import java.util.List;
@@ -19,5 +20,11 @@ public interface PeopleService {
     void deleteById(UUID id);
 
     List<Person> getAllByLinkedItemsIsNotNull();
+
+    PeopleToItems findAllPeopleWithLinkedItems();
+
+    List<Person> getAllBySuggestedItemsIsNotNull();
+
+    Person findPersonWithSuggestedItem(UUID itemId);
 
 }

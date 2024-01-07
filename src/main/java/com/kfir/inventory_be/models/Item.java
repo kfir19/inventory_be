@@ -41,4 +41,8 @@ public class Item {
         return String.format("%s - %s", type.toString(), serialNumber);
     }
 
+    public boolean checkIfEqual(Item item){
+        return this.serialNumber == item.serialNumber && this.type.getDisplayName().equals(item.type.getDisplayName());
+    }
+
 }

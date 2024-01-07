@@ -1,17 +1,16 @@
 package com.kfir.inventory_be.controllers;
 
-import com.kfir.inventory_be.models.Person;
-import com.kfir.inventory_be.models.dto.ItemDTO;
 import com.kfir.inventory_be.models.Item;
+import com.kfir.inventory_be.models.dto.ItemDTO;
 import com.kfir.inventory_be.services.ItemsService;
 import com.kfir.inventory_be.utils.ObjectMapperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -30,6 +29,11 @@ public class ItemsRestController {
     @GetMapping(value = "/byId/{id}")
     public ItemDTO getItemById(@PathVariable("id") UUID itemId) {
         return ObjectMapperUtils.map(itemsService.findItemById(itemId), ItemDTO.class);
+    }
+
+    @GetMapping(value = "/getAllItemsInCategories")
+    public Map<String, List<Item>> getAllItemsInCategories() {
+        return ObjectMapperUtils.map(itemsService.getAllItemsInCategories(), Map.class);
     }
 
     @PostMapping(value = "/save")
