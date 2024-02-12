@@ -67,19 +67,19 @@ class InventoryBeApplicationTests {
     void createItems() {
 
         for (int i = 1; i < 21; i++) {
-            Item item1 = new Item(i, new ItemType("001", "מצלמה"));
+            Item item1 = new Item("" + i, new ItemType("001", "מצלמה"));
             Item result1 = itemsService.saveOrUpdateItem(item1);
             Assertions.assertNotNull(result1);
 
-            Item item2 = new Item(i, new ItemType("002", "תג"));
+            Item item2 = new Item("" + i, new ItemType("002", "תג"));
             Item result2 = itemsService.saveOrUpdateItem(item2);
             Assertions.assertNotNull(result2);
 
-            Item item3 = new Item(i, new ItemType("003", "עיפרון"));
+            Item item3 = new Item("" + i, new ItemType("003", "עיפרון"));
             Item result3 = itemsService.saveOrUpdateItem(item3);
             Assertions.assertNotNull(result3);
 
-            Item item4 = new Item(i, new ItemType("004", "חליפה"));
+            Item item4 = new Item("" + i, new ItemType("004", "חליפה"));
             Item result4 = itemsService.saveOrUpdateItem(item4);
             Assertions.assertNotNull(result4);
         }

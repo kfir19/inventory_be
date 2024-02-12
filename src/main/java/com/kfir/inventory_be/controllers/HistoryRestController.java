@@ -76,6 +76,11 @@ public class HistoryRestController {
         return ObjectMapperUtils.mapAll(historyService.findByPersonIdOrderByDateDesc(personId), HistoryDTO.class);
     }
 
+    @GetMapping(value = "/allByPersonIdSortedByDateDescTimeDesc/{id}")
+    public List<HistoryDTO> getAllHistoryByPersonIdSortedByDateDescTimeDesc(@PathVariable("id") UUID personId) {
+        return ObjectMapperUtils.mapAll(historyService.findByPersonIdOrderByDateDescTimeDesc(personId), HistoryDTO.class);
+    }
+
     @GetMapping(value = "/allByItemIdSortedByDateDesc/{id}")
     public List<HistoryDTO> getAllHistoryByItemIdSortedByDateDesc(@PathVariable("id") UUID itemId) {
         return ObjectMapperUtils.mapAll(historyService.findByItemIdOrderByDateDesc(itemId), HistoryDTO.class);

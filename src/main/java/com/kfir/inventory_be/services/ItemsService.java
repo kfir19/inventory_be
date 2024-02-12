@@ -2,6 +2,8 @@ package com.kfir.inventory_be.services;
 
 import com.kfir.inventory_be.models.Item;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -23,6 +25,8 @@ public interface ItemsService {
     List<Item> getAllByLinkedPersonIsNotNull();
 
     List<Item> saveAll(List<Item> items);
+
+    List<Item> findAllByExpirationDateIsBefore(LocalDate today);
 
     Map<String,List<Item>> getAllItemsInCategories();
 }

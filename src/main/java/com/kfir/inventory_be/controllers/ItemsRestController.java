@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -74,5 +75,11 @@ public class ItemsRestController {
     @GetMapping(value = "/byLinkedPersonNotNull")
     public List<ItemDTO> getItemById() {
         return ObjectMapperUtils.mapAll(itemsService.getAllByLinkedPersonIsNotNull(), ItemDTO.class);
+    }
+
+    @GetMapping(value = "/expiredItems")
+    public List<ItemDTO> getAllExpiredItems() {
+        List<Item> expiredItems = itemsService.findAllByExpirationDateIsBefore(LocalDate.now());
+        return ObjectMapperUtils.mapAll(expiredItems, ItemDTO.class);
     }
 }

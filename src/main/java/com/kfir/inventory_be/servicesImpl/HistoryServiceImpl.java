@@ -79,9 +79,19 @@ public class HistoryServiceImpl implements HistoryService {
     }
 
     @Override
+    public List<History> findByItemIdOrderByDateDescTimeDesc(UUID id){
+        return repo.findByItemIdOrderByDateDescTimeDesc(id);
+    }
+
+    @Override
+    public List<History> findByPersonIdOrderByDateDescTimeDesc(UUID id){
+        return repo.findByPersonIdOrderByDateDescTimeDesc(id);
+    }
+
+    @Override
     public AggregatedHistory findAggregatedHistoryByPersonId(UUID id) {
 
-        List<History> personHistory = findByPersonIdOrderByDateDesc(id);
+        List<History> personHistory = findByPersonIdOrderByDateDescTimeDesc(id);
 
         AggregatedHistory aggregatedHistory = buildAggregatedHistory(id.toString(), personHistory);
 
@@ -90,7 +100,7 @@ public class HistoryServiceImpl implements HistoryService {
     @Override
     public AggregatedHistory findAggregatedHistoryByItemId(UUID id) {
 
-        List<History> itemHistory = findByItemIdOrderByDateDesc(id);
+        List<History> itemHistory = findByItemIdOrderByDateDescTimeDesc(id);
 
         AggregatedHistory aggregatedHistory = buildAggregatedHistory(id.toString(), itemHistory);
 

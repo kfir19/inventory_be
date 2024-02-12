@@ -12,6 +12,6 @@ public class HistoryDTO {
     private UUID itemId;
     private UUID personId;
     private String displayName;
-    private int serialNumber;
+    private String serialNumber;
     private String message;
 }

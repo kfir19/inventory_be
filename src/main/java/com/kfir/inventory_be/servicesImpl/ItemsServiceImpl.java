@@ -3,9 +3,11 @@ package com.kfir.inventory_be.servicesImpl;
 import com.kfir.inventory_be.models.Item;
 import com.kfir.inventory_be.repositories.ItemsRepository;
 import com.kfir.inventory_be.services.ItemsService;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -52,6 +54,11 @@ public class ItemsServiceImpl implements ItemsService {
     @Override
     public List<Item> saveAll(List<Item> items) {
         return repo.saveAll(items);
+    }
+
+    @Override
+    public List<Item> findAllByExpirationDateIsBefore(LocalDate today){
+        return repo.findAllByExpirationDateIsBefore(today);
     }
 
     @Override

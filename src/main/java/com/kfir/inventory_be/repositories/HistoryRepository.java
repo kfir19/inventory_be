@@ -28,7 +28,11 @@ public interface HistoryRepository extends MongoRepository<History, UUID> {
 
     List<History> findByPersonIdOrderByDateDesc(UUID id);
 
+    List<History> findByPersonIdOrderByDateDescTimeDesc(UUID id);
+
     List<History> findByItemIdOrderByDateDesc(UUID id);
+
+    List<History> findByItemIdOrderByDateDescTimeDesc(UUID id);
 
     AggregatedHistory findAggregatedHistoryByPersonId(UUID id);
 

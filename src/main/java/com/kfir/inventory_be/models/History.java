@@ -17,7 +17,7 @@ public class History {
     private UUID itemId;
     private UUID personId;
     private String displayName;
-    private int serialNumber;
+    private String serialNumber;
     private String message;
 
     public History() {

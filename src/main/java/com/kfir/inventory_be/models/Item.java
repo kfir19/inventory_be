@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -14,7 +16,7 @@ public class Item {
     @Id
     private UUID id;
     private UUID linkedPerson;
-    private int serialNumber;
+    private String serialNumber;
     private boolean isInStock;
     private boolean isSuggested;
     private UUID linkedKit;
@@ -22,11 +24,13 @@ public class Item {
     private String timeStamp;
     private List<UUID> kitItemsIds;
     private boolean isTypeKit;
+    private boolean isExpired;
+    private LocalDate expirationDate;
 
     public Item() {
     }
 
-    public Item(int serialNumber, ItemType type) {
+    public Item(String serialNumber, ItemType type) {
         String idKey = String.format("%s_%s", serialNumber, type.getTypeId());
         this.id = UUID.nameUUIDFromBytes(idKey.getBytes());
         this.serialNumber = serialNumber;
@@ -34,6 +38,7 @@ public class Item {
         this.isInStock = true;
         this.isSuggested = false;
         this.isTypeKit = false;
+        this.isExpired = false;
     }
 
     @Override
