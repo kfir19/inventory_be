@@ -1,6 +1,7 @@
 package com.kfir.inventory_be.services;
 
 import com.kfir.inventory_be.models.Item;
+import com.kfir.inventory_be.models.ItemType;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -13,6 +14,8 @@ public interface ItemsService {
     List<Item> findAll();
 
     Iterable<Item> findAllById(Iterable<UUID> ids);
+
+    List<Item> getAllItemsByType();
 
     Item findItemById(UUID id);
 

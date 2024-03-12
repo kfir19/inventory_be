@@ -1,10 +1,10 @@
 package com.kfir.inventory_be.repositories;
 
 import com.kfir.inventory_be.models.Item;
+import com.kfir.inventory_be.models.ItemType;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,6 +13,8 @@ public interface ItemsRepository extends MongoRepository<Item, UUID> {
     List<Item> findAll();
 
     Iterable<Item> findAllById(Iterable<UUID> ids);
+
+    List<Item> getAllItemsByType(ItemType type);
 
     Item findItemById(UUID id);
 

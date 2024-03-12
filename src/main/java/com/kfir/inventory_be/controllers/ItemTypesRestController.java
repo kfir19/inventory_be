@@ -28,6 +28,11 @@ public class ItemTypesRestController {
         return ObjectMapperUtils.mapAll(itemTypesService.findAll(), ItemTypeDTO.class);
     }
 
+    @GetMapping(value = "/byBasic/{basic}")
+    public List<ItemTypeDTO> getAllItemTypesByBasic(@PathVariable("basic") boolean basic) {
+        return ObjectMapperUtils.mapAll(itemTypesService.findAllByBasic(basic), ItemTypeDTO.class);
+    }
+
     @GetMapping(value = "/byId/{id}")
     public ItemTypeDTO getItemTypeById(@PathVariable("id") UUID itemTypeId) {
         return ObjectMapperUtils.map(itemTypesService.findItemTypeById(itemTypeId), ItemTypeDTO.class);

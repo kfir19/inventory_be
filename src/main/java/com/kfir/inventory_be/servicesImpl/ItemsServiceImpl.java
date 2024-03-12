@@ -1,9 +1,10 @@
 package com.kfir.inventory_be.servicesImpl;
 
 import com.kfir.inventory_be.models.Item;
+import com.kfir.inventory_be.models.ItemType;
 import com.kfir.inventory_be.repositories.ItemsRepository;
+import com.kfir.inventory_be.services.ItemTypesService;
 import com.kfir.inventory_be.services.ItemsService;
-import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,10 @@ public class ItemsServiceImpl implements ItemsService {
 
     @Autowired
     private ItemsRepository repo;
+
+    @Autowired
+    private ItemTypesService itService;
+
 
     @Override
     public List<Item> findAll() {
@@ -29,6 +34,20 @@ public class ItemsServiceImpl implements ItemsService {
     @Override
     public Item findItemById(UUID id) {
         return repo.findItemById(id);
+    }
+
+
+    @Override
+    public List<Item> getAllItemsByType(){
+        List<ItemType> basicTypes = itService.findAllByBasic(true);
+
+        List<Item> foundItems = new ArrayList<>();
+
+        for(ItemType type: basicTypes){
+            foundItems.addAll(repo.getAllItemsByType(type));
+        }
+
+        return foundItems;
     }
 
     @Override

@@ -38,7 +38,7 @@ class InventoryBeApplicationTests {
         ItemType result4 = itemTypesService.saveOrUpdateItemType(itemType4);
         Assertions.assertNotNull(result4);
 
-        ItemType itemType5 = new ItemType("1000", "ערכה");
+        ItemType itemType5 = new ItemType("1000", "תיק בטיחות");
         ItemType result5 = itemTypesService.saveOrUpdateItemType(itemType5);
         Assertions.assertNotNull(result5);
     }

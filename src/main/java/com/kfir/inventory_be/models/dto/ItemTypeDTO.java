@@ -11,4 +11,5 @@ public class ItemTypeDTO {
 
     private String typeId;
     private String displayName;
+    private boolean basic;
 }

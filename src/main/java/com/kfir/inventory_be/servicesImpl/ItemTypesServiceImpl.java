@@ -39,4 +39,8 @@ public class ItemTypesServiceImpl implements ItemTypesService {
     public List<ItemType> saveAll(List<ItemType> itemTypes) {
         return repo.saveAll(itemTypes);
     }
+
+    public List<ItemType> findAllByBasic(boolean basic) {
+        return repo.findAllByBasic(basic);
+    }
 }

@@ -15,6 +15,7 @@ public class ItemType {
 
     private String typeId;
     private String displayName;
+    private boolean basic;
 
 
     public ItemType() {

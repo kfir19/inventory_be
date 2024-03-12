@@ -1,6 +1,7 @@
 package com.kfir.inventory_be.controllers;
 
 import com.kfir.inventory_be.models.Item;
+import com.kfir.inventory_be.models.ItemType;
 import com.kfir.inventory_be.models.dto.ItemDTO;
 import com.kfir.inventory_be.services.ItemsService;
 import com.kfir.inventory_be.utils.ObjectMapperUtils;
@@ -30,6 +31,11 @@ public class ItemsRestController {
     @GetMapping(value = "/byId/{id}")
     public ItemDTO getItemById(@PathVariable("id") UUID itemId) {
         return ObjectMapperUtils.map(itemsService.findItemById(itemId), ItemDTO.class);
+    }
+
+    @GetMapping(value = "/byBasicType")
+    public List<ItemDTO> getAllItemsByType() {
+        return ObjectMapperUtils.mapAll(itemsService.getAllItemsByType(), ItemDTO.class);
     }
 
     @GetMapping(value = "/getAllItemsInCategories")

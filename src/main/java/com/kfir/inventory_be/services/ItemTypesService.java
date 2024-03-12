@@ -17,4 +17,6 @@ public interface ItemTypesService {
 
     List<ItemType> saveAll(List<ItemType> itemTypes);
 
+    List<ItemType> findAllByBasic(boolean basic);
+
 }
