@@ -12,9 +12,11 @@ import org.apache.catalina.filters.RemoteIpFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class PeopleServiceImpl implements PeopleService {
@@ -53,6 +55,12 @@ public class PeopleServiceImpl implements PeopleService {
     @Override
     public List<Person> getAllByLinkedItemsIsNotNull() {
         return repo.getAllByLinkedItemsIsNotNull();
+    }
+
+    @Override
+    public List<Person> getAllByLinkedItemsNotEmpty(){
+        List<Person> people = repo.getAllByLinkedItemsIsNotNull();
+        return people.stream().filter(person -> !person.getLinkedItems().isEmpty()).collect(Collectors.toList());
     }
 
     public List<Person> getAllBySuggestedItemsIsNotNull() {

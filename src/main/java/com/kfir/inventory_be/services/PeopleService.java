@@ -27,4 +27,6 @@ public interface PeopleService {
 
     Person findPersonWithSuggestedItem(UUID itemId);
 
+    List<Person> getAllByLinkedItemsNotEmpty();
+
 }

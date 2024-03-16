@@ -76,4 +76,9 @@ public class PeopleRestController {
     public List<PersonDTO> getAllByLinkedItemsNotNull() {
         return ObjectMapperUtils.mapAll(peopleService.getAllByLinkedItemsIsNotNull(), PersonDTO.class);
     }
+
+    @GetMapping(value = "/byLinkedItemsNotEmpty")
+    public List<PersonDTO> getAllByLinkedItemsNotEmpty() {
+        return ObjectMapperUtils.mapAll(peopleService.getAllByLinkedItemsNotEmpty(), PersonDTO.class);
+    }
 }
