@@ -38,7 +38,13 @@ public class PeopleRestController {
 
     @GetMapping(value = "/personWithSuggestedItem/{id}")
     public PersonDTO findPersonWithSuggestedItem(@PathVariable("id") UUID itemId) {
-        return ObjectMapperUtils.map(peopleService.findPersonWithSuggestedItem(itemId), PersonDTO.class);
+        Person suggestedPerson = peopleService.findPersonWithSuggestedItem(itemId);
+
+        if (suggestedPerson != null) {
+            return ObjectMapperUtils.map(suggestedPerson, PersonDTO.class);
+        }
+
+        return null;
     }
 
     @PostMapping(value = "/save")
