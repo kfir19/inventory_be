@@ -39,4 +39,6 @@ public interface HistoryRepository extends MongoRepository<History, UUID> {
     AggregatedHistory findAggregatedHistoryByItemId(UUID id);
     @Override
     <S extends History> List<S> saveAll(Iterable<S> histories);
+
+    List<History> findByDateOrderByTimeDesc(String date);
 }

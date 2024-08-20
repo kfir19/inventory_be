@@ -38,4 +38,6 @@ public interface HistoryService {
     AggregatedHistory findAggregatedHistoryByItemId(UUID id);
 
     List<History> saveAll(List<History> histories);
+
+    List<History> findByDateOrderByTimeDesc(String date);
 }

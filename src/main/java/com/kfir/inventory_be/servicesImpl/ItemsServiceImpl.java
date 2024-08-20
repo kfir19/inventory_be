@@ -61,8 +61,8 @@ public class ItemsServiceImpl implements ItemsService {
     }
 
     @Override
-    public List<Item> getAllByInStock(boolean isInStock) {
-        return repo.getAllByInStock(isInStock);
+    public List<Item> getAllByIsInStock(boolean isInStock) {
+        return repo.getAllByIsInStock(isInStock);
     }
 
     @Override
@@ -80,6 +80,10 @@ public class ItemsServiceImpl implements ItemsService {
         return repo.findAllByExpirationDateIsBefore(today);
     }
 
+    public List<Item> findAllByExpirationDateIsBetween(LocalDate today, LocalDate todayPlus1Month){
+        return repo.findAllByExpirationDateIsBetween(today,todayPlus1Month);
+    }
+
     @Override
     public Map<String,List<Item>> getAllItemsInCategories() {
 
@@ -90,6 +94,10 @@ public class ItemsServiceImpl implements ItemsService {
         allItems.stream().forEach(item -> {
 
             String itemDisplayName = item.getType().getDisplayName();
+
+            if(item.getType().getTypeId().contains("-")){
+                return;
+            }
 
             if (categorizedItems.containsKey(item.getType().getDisplayName())) {
                 categorizedItems.get(itemDisplayName).add(item);

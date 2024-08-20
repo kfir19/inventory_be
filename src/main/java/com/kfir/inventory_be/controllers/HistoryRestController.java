@@ -95,4 +95,11 @@ public class HistoryRestController {
     public AggregatedHistory getAggregatedHistoryByItemId(@PathVariable("id") UUID itemId) {
         return ObjectMapperUtils.map(historyService.findAggregatedHistoryByItemId(itemId), AggregatedHistory.class);
     }
+
+    @GetMapping(value = "/allByDateSortedByTimeDesc/{date}")
+    public List<HistoryDTO> getAllHistoryByDateSortedByTimeDesc(@PathVariable("date") String date) {
+        return ObjectMapperUtils.mapAll(historyService.findByDateOrderByTimeDesc(date), HistoryDTO.class);
+    }
+
+
 }

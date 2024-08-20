@@ -22,11 +22,13 @@ public interface ItemsRepository extends MongoRepository<Item, UUID> {
 
     void deleteItemById(UUID id);
 
-    List<Item> getAllByInStock(boolean isInStock);
+    List<Item> getAllByIsInStock(boolean isInStock);
 
     List<Item> getAllByLinkedPersonIsNotNull();
 
     List<Item> findAllByExpirationDateIsBefore(LocalDate today);
+
+    List<Item> findAllByExpirationDateIsBetween(LocalDate today, LocalDate todayPlus1Month);
     @Override
     <S extends Item> List<S> saveAll(Iterable<S> entities);
 }

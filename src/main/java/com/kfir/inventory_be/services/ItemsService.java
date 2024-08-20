@@ -23,13 +23,15 @@ public interface ItemsService {
 
     void deleteItemById(UUID id);
 
-    List<Item> getAllByInStock(boolean isInStock);
+    List<Item> getAllByIsInStock(boolean isInStock);
 
     List<Item> getAllByLinkedPersonIsNotNull();
 
     List<Item> saveAll(List<Item> items);
 
     List<Item> findAllByExpirationDateIsBefore(LocalDate today);
+
+    List<Item> findAllByExpirationDateIsBetween(LocalDate today, LocalDate todayPlus1Month);
 
     Map<String,List<Item>> getAllItemsInCategories();
 }

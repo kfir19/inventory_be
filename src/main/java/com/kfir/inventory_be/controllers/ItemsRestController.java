@@ -1,7 +1,6 @@
 package com.kfir.inventory_be.controllers;
 
 import com.kfir.inventory_be.models.Item;
-import com.kfir.inventory_be.models.ItemType;
 import com.kfir.inventory_be.models.dto.ItemDTO;
 import com.kfir.inventory_be.services.ItemsService;
 import com.kfir.inventory_be.utils.ObjectMapperUtils;
@@ -74,12 +73,12 @@ public class ItemsRestController {
     }
 
     @GetMapping(value = "/byInStock/{isInStock}")
-    public List<ItemDTO> getAllItemsByInStock(@PathVariable("isInStock") boolean itemInStock) {
-        return ObjectMapperUtils.mapAll(itemsService.getAllByInStock(itemInStock), ItemDTO.class);
+    public List<ItemDTO> getAllItemsByIsInStock(@PathVariable("isInStock") boolean itemInStock) {
+        return ObjectMapperUtils.mapAll(itemsService.getAllByIsInStock(itemInStock), ItemDTO.class);
     }
 
     @GetMapping(value = "/byLinkedPersonNotNull")
-    public List<ItemDTO> getItemById() {
+    public List<ItemDTO> getItemsByLinkedPersonNotNull() {
         return ObjectMapperUtils.mapAll(itemsService.getAllByLinkedPersonIsNotNull(), ItemDTO.class);
     }
 
@@ -87,5 +86,11 @@ public class ItemsRestController {
     public List<ItemDTO> getAllExpiredItems() {
         List<Item> expiredItems = itemsService.findAllByExpirationDateIsBefore(LocalDate.now());
         return ObjectMapperUtils.mapAll(expiredItems, ItemDTO.class);
+    }
+
+    @GetMapping(value = "/aboutToBeExpiredItems")
+    public List<ItemDTO> getAllAboutToBeExpiredItems() {
+        List<Item> aboutToBeExpiredItems = itemsService.findAllByExpirationDateIsBetween(LocalDate.now().plusDays(1), LocalDate.now().plusMonths(1));
+        return ObjectMapperUtils.mapAll(aboutToBeExpiredItems, ItemDTO.class);
     }
 }

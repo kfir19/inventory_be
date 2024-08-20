@@ -4,20 +4,13 @@ import com.kfir.inventory_be.data.AggregatedHistory;
 import com.kfir.inventory_be.data.HistoryDate;
 import com.kfir.inventory_be.data.HistoryTime;
 import com.kfir.inventory_be.models.History;
-import com.kfir.inventory_be.models.Person;
 import com.kfir.inventory_be.repositories.HistoryRepository;
-import com.kfir.inventory_be.repositories.PeopleRepository;
 import com.kfir.inventory_be.services.HistoryService;
-import com.kfir.inventory_be.services.PeopleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.aggregation.*;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -79,12 +72,12 @@ public class HistoryServiceImpl implements HistoryService {
     }
 
     @Override
-    public List<History> findByItemIdOrderByDateDescTimeDesc(UUID id){
+    public List<History> findByItemIdOrderByDateDescTimeDesc(UUID id) {
         return repo.findByItemIdOrderByDateDescTimeDesc(id);
     }
 
     @Override
-    public List<History> findByPersonIdOrderByDateDescTimeDesc(UUID id){
+    public List<History> findByPersonIdOrderByDateDescTimeDesc(UUID id) {
         return repo.findByPersonIdOrderByDateDescTimeDesc(id);
     }
 
@@ -97,6 +90,7 @@ public class HistoryServiceImpl implements HistoryService {
 
         return aggregatedHistory;
     }
+
     @Override
     public AggregatedHistory findAggregatedHistoryByItemId(UUID id) {
 
@@ -136,5 +130,30 @@ public class HistoryServiceImpl implements HistoryService {
         return aggregatedHistory;
     }
 
+    public List<History> findByDateOrderByTimeDesc(String date) {
+
+        String[] decoDate = date.split("-");
+
+        if (decoDate.length == 3) {
+
+            List<History> reportData = repo.findByDateOrderByTimeDesc(String.format("%s.%s.%s", Integer.parseInt(decoDate[2]), Integer.parseInt(decoDate[1]), Integer.parseInt(decoDate[0])));
+
+            List<History> filteredData = new ArrayList<>();
+
+            reportData.stream().forEach(entry -> {
+                if (entry.getPersonId() != null && entry.getMessage() != null) {
+                    entry.setMessage(String.format("%s %s", entry.getDisplayName(), entry.getMessage()));
+                    filteredData.add(entry);
+                }
+            });
+
+            filteredData.sort(Comparator.comparing(History::getTime));
+
+            return filteredData;
+        }
+
+        return repo.findByDateOrderByTimeDesc(date);
+
+    }
 
 }
